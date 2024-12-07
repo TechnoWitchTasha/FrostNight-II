@@ -26,7 +26,7 @@
                 {
                     "name": "LookX",
                     "type": "Value",
-                    "id": "22c8bd7a-8d5f-4b7e-9ee9-964b11dc22dc",
+                    "id": "c9084acb-ad20-4cc0-9f15-564bfe600e0c",
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
@@ -35,7 +35,7 @@
                 {
                     "name": "LookY",
                     "type": "Value",
-                    "id": "75f210e4-d6ce-40a2-90c3-7d6551ba6d12",
+                    "id": "1aced47e-4dd9-4618-bcf5-dd0a523bf405",
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
@@ -133,44 +133,22 @@
                 },
                 {
                     "name": "",
-                    "id": "e57a4e9b-358a-4203-b5e7-fbbb169a12e5",
-                    "path": "<Mouse>/scroll/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard",
-                    "action": "LookX",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7515eff0-e39b-4c6f-bdfa-e53d53fc0523",
+                    "id": "b8559fde-c405-4816-8181-fb3db6dfd20d",
                     "path": "<Gamepad>/rightStick/x",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
+                    "groups": "",
                     "action": "LookX",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "5f639ef8-df98-4970-a88e-e734a1c1d2ca",
-                    "path": "<Mouse>/scroll/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard",
-                    "action": "LookY",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5d3af3c3-9805-43d1-9958-99defe377fde",
+                    "id": "ef650183-1c5e-409e-873b-4fba035ea356",
                     "path": "<Gamepad>/rightStick/y",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
+                    "groups": "",
                     "action": "LookY",
                     "isComposite": false,
                     "isPartOfComposite": false
