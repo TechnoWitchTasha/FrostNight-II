@@ -62,6 +62,132 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""71c021cb-4e3b-4ff6-9bee-9334ca8eabe8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""a7ed4803-b6dd-481a-999a-928b3206618f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Left Action"",
+                    ""type"": ""Value"",
+                    ""id"": ""4e58d6e0-3e66-453d-81df-918e2bb29c91"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Right Action"",
+                    ""type"": ""Value"",
+                    ""id"": ""f8048d28-fa0d-4bcd-9761-98dfcb1d6f3c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Defensive Action"",
+                    ""type"": ""Value"",
+                    ""id"": ""70649201-2c14-435b-b730-133991191ff4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Melee"",
+                    ""type"": ""Button"",
+                    ""id"": ""60234f2d-50be-4265-b9eb-9344d3a29f0f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cycle Left Action"",
+                    ""type"": ""Value"",
+                    ""id"": ""88c32606-d8b1-4e86-9752-494a7ef7c95a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Cycle Right Action"",
+                    ""type"": ""Value"",
+                    ""id"": ""c9134507-760a-46a2-ab84-9118ce651dc3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Cycle Defensive Action"",
+                    ""type"": ""Value"",
+                    ""id"": ""cc9dd679-f5f6-4f74-a932-defc176bf0bc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Toggle Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""2dca0baa-129a-4d28-99c6-ae5cc3348f24"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Toggle Build Mode"",
+                    ""type"": ""Button"",
+                    ""id"": ""94b0be04-9d85-4451-8e6d-ec303ef50c38"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cycle Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""62f7bfc8-ef58-4c43-afa1-3c26148691c3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Rotate"",
+                    ""type"": ""Button"",
+                    ""id"": ""3f67c8d2-4072-4383-a925-dab56efc9a96"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Toggle Quickspell Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""52898d3d-3c39-4908-981b-a83e0556708d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -174,6 +300,402 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""LookY"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""10043cb9-09fc-4de7-a4b9-94b16ee5de96"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f8211dd1-6424-4d8f-99c9-85f34b4f3cb4"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6f73bedb-95fd-4f54-9342-bf25ff0e5861"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""26a24214-9103-4c40-89b0-461ebf8107f0"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6fa6dc92-3df6-4918-9804-6b481b3a35d2"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Left Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0dd20a24-3989-4198-a715-77ca2545e61a"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Left Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""26106f04-533d-42d5-ba18-aae0bd7f5b75"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Right Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca00ef21-b2fb-4885-b6d1-5e1f34c98182"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Right Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""991b4655-e2ba-47bd-80b5-fd1af2a02d54"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Defensive Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b363f3e5-dc6d-46c9-a01c-c426f9815702"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Defensive Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""12c4605e-8168-4e23-86a1-1436de4625c7"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Melee"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4efa5fff-c425-4369-bb6b-f624d3837d12"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Melee"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8d245935-4d65-405a-a607-d5330fce060e"",
+                    ""path"": ""<Mouse>/scroll/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Cycle Left Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""471c3c04-59aa-412f-81ff-64a733c6361a"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Cycle Left Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""43149f92-edce-4b96-80a9-dec740d49405"",
+                    ""path"": ""<Mouse>/scroll/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Cycle Right Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""395c852e-08e8-4993-aaac-4dbe0a2c4a6e"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Cycle Right Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c2f0f5ac-b7db-42aa-8bce-ef22fe548e13"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Cycle Defensive Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9c2139e5-d1ed-4264-8998-73f0aba565b4"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Cycle Defensive Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""67ecf3fb-e2ce-4e58-84ce-aeaccf5cd343"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Toggle Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""df2c74ff-0f6e-4abc-b42a-1e5726b9b739"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Toggle Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b50b0b8b-f1c2-4d6b-adf6-a1b156a26641"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Toggle Build Mode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""64589965-2378-45e0-9526-9fff0c54a423"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Toggle Build Mode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""269ffbd9-2825-46d9-9fff-5b8ab80c228c"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cycle Menu"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Negative"",
+                    ""id"": ""2a7ea78f-eda0-43cb-898e-d48eb2a98006"",
+                    ""path"": ""<Mouse>/scroll/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Cycle Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Positive"",
+                    ""id"": ""758eb078-b7bc-4528-bbd9-59cf0a906bf1"",
+                    ""path"": ""<Mouse>/scroll/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Cycle Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""f1b436fa-a886-429a-9230-6c5d74393140"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cycle Menu"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Negative"",
+                    ""id"": ""52307262-9d56-48fc-93a9-27b9b270dd40"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Cycle Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Positive"",
+                    ""id"": ""21bab04e-53ea-4c7c-bf70-a04b13be6d31"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Cycle Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""54b5b7a5-a8bb-4122-98a1-64ddf5725be7"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Negative"",
+                    ""id"": ""5befb8af-323f-4933-b64e-9206d422b441"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Positive"",
+                    ""id"": ""d9d4dd58-862b-4318-ae83-1f8180786a9e"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""43213a77-8c0b-4e91-834c-7efd730a111b"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Negative"",
+                    ""id"": ""78aea3eb-a262-468a-ad7d-26baf0c372d8"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Positive"",
+                    ""id"": ""024f57ec-a7fe-4c05-903e-eead1729401c"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6991af76-efda-4452-8835-970ea1c610f4"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard"",
+                    ""action"": ""Toggle Quickspell Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b4222fc1-64e9-4adf-9887-cb04c4ca450c"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Toggle Quickspell Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -209,6 +731,20 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_LookX = m_Player.FindAction("LookX", throwIfNotFound: true);
         m_Player_LookY = m_Player.FindAction("LookY", throwIfNotFound: true);
+        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_LeftAction = m_Player.FindAction("Left Action", throwIfNotFound: true);
+        m_Player_RightAction = m_Player.FindAction("Right Action", throwIfNotFound: true);
+        m_Player_DefensiveAction = m_Player.FindAction("Defensive Action", throwIfNotFound: true);
+        m_Player_Melee = m_Player.FindAction("Melee", throwIfNotFound: true);
+        m_Player_CycleLeftAction = m_Player.FindAction("Cycle Left Action", throwIfNotFound: true);
+        m_Player_CycleRightAction = m_Player.FindAction("Cycle Right Action", throwIfNotFound: true);
+        m_Player_CycleDefensiveAction = m_Player.FindAction("Cycle Defensive Action", throwIfNotFound: true);
+        m_Player_ToggleInventory = m_Player.FindAction("Toggle Inventory", throwIfNotFound: true);
+        m_Player_ToggleBuildMode = m_Player.FindAction("Toggle Build Mode", throwIfNotFound: true);
+        m_Player_CycleMenu = m_Player.FindAction("Cycle Menu", throwIfNotFound: true);
+        m_Player_Rotate = m_Player.FindAction("Rotate", throwIfNotFound: true);
+        m_Player_ToggleQuickspellMenu = m_Player.FindAction("Toggle Quickspell Menu", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
@@ -279,6 +815,20 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_LookX;
     private readonly InputAction m_Player_LookY;
+    private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_LeftAction;
+    private readonly InputAction m_Player_RightAction;
+    private readonly InputAction m_Player_DefensiveAction;
+    private readonly InputAction m_Player_Melee;
+    private readonly InputAction m_Player_CycleLeftAction;
+    private readonly InputAction m_Player_CycleRightAction;
+    private readonly InputAction m_Player_CycleDefensiveAction;
+    private readonly InputAction m_Player_ToggleInventory;
+    private readonly InputAction m_Player_ToggleBuildMode;
+    private readonly InputAction m_Player_CycleMenu;
+    private readonly InputAction m_Player_Rotate;
+    private readonly InputAction m_Player_ToggleQuickspellMenu;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -287,6 +837,20 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @LookX => m_Wrapper.m_Player_LookX;
         public InputAction @LookY => m_Wrapper.m_Player_LookY;
+        public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @LeftAction => m_Wrapper.m_Player_LeftAction;
+        public InputAction @RightAction => m_Wrapper.m_Player_RightAction;
+        public InputAction @DefensiveAction => m_Wrapper.m_Player_DefensiveAction;
+        public InputAction @Melee => m_Wrapper.m_Player_Melee;
+        public InputAction @CycleLeftAction => m_Wrapper.m_Player_CycleLeftAction;
+        public InputAction @CycleRightAction => m_Wrapper.m_Player_CycleRightAction;
+        public InputAction @CycleDefensiveAction => m_Wrapper.m_Player_CycleDefensiveAction;
+        public InputAction @ToggleInventory => m_Wrapper.m_Player_ToggleInventory;
+        public InputAction @ToggleBuildMode => m_Wrapper.m_Player_ToggleBuildMode;
+        public InputAction @CycleMenu => m_Wrapper.m_Player_CycleMenu;
+        public InputAction @Rotate => m_Wrapper.m_Player_Rotate;
+        public InputAction @ToggleQuickspellMenu => m_Wrapper.m_Player_ToggleQuickspellMenu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -308,6 +872,48 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @LookY.started += instance.OnLookY;
             @LookY.performed += instance.OnLookY;
             @LookY.canceled += instance.OnLookY;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+            @LeftAction.started += instance.OnLeftAction;
+            @LeftAction.performed += instance.OnLeftAction;
+            @LeftAction.canceled += instance.OnLeftAction;
+            @RightAction.started += instance.OnRightAction;
+            @RightAction.performed += instance.OnRightAction;
+            @RightAction.canceled += instance.OnRightAction;
+            @DefensiveAction.started += instance.OnDefensiveAction;
+            @DefensiveAction.performed += instance.OnDefensiveAction;
+            @DefensiveAction.canceled += instance.OnDefensiveAction;
+            @Melee.started += instance.OnMelee;
+            @Melee.performed += instance.OnMelee;
+            @Melee.canceled += instance.OnMelee;
+            @CycleLeftAction.started += instance.OnCycleLeftAction;
+            @CycleLeftAction.performed += instance.OnCycleLeftAction;
+            @CycleLeftAction.canceled += instance.OnCycleLeftAction;
+            @CycleRightAction.started += instance.OnCycleRightAction;
+            @CycleRightAction.performed += instance.OnCycleRightAction;
+            @CycleRightAction.canceled += instance.OnCycleRightAction;
+            @CycleDefensiveAction.started += instance.OnCycleDefensiveAction;
+            @CycleDefensiveAction.performed += instance.OnCycleDefensiveAction;
+            @CycleDefensiveAction.canceled += instance.OnCycleDefensiveAction;
+            @ToggleInventory.started += instance.OnToggleInventory;
+            @ToggleInventory.performed += instance.OnToggleInventory;
+            @ToggleInventory.canceled += instance.OnToggleInventory;
+            @ToggleBuildMode.started += instance.OnToggleBuildMode;
+            @ToggleBuildMode.performed += instance.OnToggleBuildMode;
+            @ToggleBuildMode.canceled += instance.OnToggleBuildMode;
+            @CycleMenu.started += instance.OnCycleMenu;
+            @CycleMenu.performed += instance.OnCycleMenu;
+            @CycleMenu.canceled += instance.OnCycleMenu;
+            @Rotate.started += instance.OnRotate;
+            @Rotate.performed += instance.OnRotate;
+            @Rotate.canceled += instance.OnRotate;
+            @ToggleQuickspellMenu.started += instance.OnToggleQuickspellMenu;
+            @ToggleQuickspellMenu.performed += instance.OnToggleQuickspellMenu;
+            @ToggleQuickspellMenu.canceled += instance.OnToggleQuickspellMenu;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -324,6 +930,48 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @LookY.started -= instance.OnLookY;
             @LookY.performed -= instance.OnLookY;
             @LookY.canceled -= instance.OnLookY;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+            @LeftAction.started -= instance.OnLeftAction;
+            @LeftAction.performed -= instance.OnLeftAction;
+            @LeftAction.canceled -= instance.OnLeftAction;
+            @RightAction.started -= instance.OnRightAction;
+            @RightAction.performed -= instance.OnRightAction;
+            @RightAction.canceled -= instance.OnRightAction;
+            @DefensiveAction.started -= instance.OnDefensiveAction;
+            @DefensiveAction.performed -= instance.OnDefensiveAction;
+            @DefensiveAction.canceled -= instance.OnDefensiveAction;
+            @Melee.started -= instance.OnMelee;
+            @Melee.performed -= instance.OnMelee;
+            @Melee.canceled -= instance.OnMelee;
+            @CycleLeftAction.started -= instance.OnCycleLeftAction;
+            @CycleLeftAction.performed -= instance.OnCycleLeftAction;
+            @CycleLeftAction.canceled -= instance.OnCycleLeftAction;
+            @CycleRightAction.started -= instance.OnCycleRightAction;
+            @CycleRightAction.performed -= instance.OnCycleRightAction;
+            @CycleRightAction.canceled -= instance.OnCycleRightAction;
+            @CycleDefensiveAction.started -= instance.OnCycleDefensiveAction;
+            @CycleDefensiveAction.performed -= instance.OnCycleDefensiveAction;
+            @CycleDefensiveAction.canceled -= instance.OnCycleDefensiveAction;
+            @ToggleInventory.started -= instance.OnToggleInventory;
+            @ToggleInventory.performed -= instance.OnToggleInventory;
+            @ToggleInventory.canceled -= instance.OnToggleInventory;
+            @ToggleBuildMode.started -= instance.OnToggleBuildMode;
+            @ToggleBuildMode.performed -= instance.OnToggleBuildMode;
+            @ToggleBuildMode.canceled -= instance.OnToggleBuildMode;
+            @CycleMenu.started -= instance.OnCycleMenu;
+            @CycleMenu.performed -= instance.OnCycleMenu;
+            @CycleMenu.canceled -= instance.OnCycleMenu;
+            @Rotate.started -= instance.OnRotate;
+            @Rotate.performed -= instance.OnRotate;
+            @Rotate.canceled -= instance.OnRotate;
+            @ToggleQuickspellMenu.started -= instance.OnToggleQuickspellMenu;
+            @ToggleQuickspellMenu.performed -= instance.OnToggleQuickspellMenu;
+            @ToggleQuickspellMenu.canceled -= instance.OnToggleQuickspellMenu;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -365,5 +1013,19 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnLookX(InputAction.CallbackContext context);
         void OnLookY(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+        void OnLeftAction(InputAction.CallbackContext context);
+        void OnRightAction(InputAction.CallbackContext context);
+        void OnDefensiveAction(InputAction.CallbackContext context);
+        void OnMelee(InputAction.CallbackContext context);
+        void OnCycleLeftAction(InputAction.CallbackContext context);
+        void OnCycleRightAction(InputAction.CallbackContext context);
+        void OnCycleDefensiveAction(InputAction.CallbackContext context);
+        void OnToggleInventory(InputAction.CallbackContext context);
+        void OnToggleBuildMode(InputAction.CallbackContext context);
+        void OnCycleMenu(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
+        void OnToggleQuickspellMenu(InputAction.CallbackContext context);
     }
 }
