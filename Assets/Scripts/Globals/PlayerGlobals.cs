@@ -14,8 +14,8 @@ public class PlayerGlobals : MonoBehaviour
         Singleton = this;
     }
 
-    public float moveSpeed, jumpForce, jumpCooldown, dashForce, dashDuration;
-    public float baseMoveSpeed, baseJumpForce, baseJumpCooldown, baseDashForce, baseDashDuration;
+    public float moveSpeed, jumpForce, jumpCooldown, dashForce, dashDuration, dashCooldown, dashResetTimer;
+    public float baseMoveSpeed, baseJumpForce, baseJumpCooldown, baseDashForce, baseDashDuration, baseDashCooldown, baseDashResetTimer;
     public int totalJumps, totalDashes;
     public int baseTotalJumps, baseTotalDashes;
     private void Start(){
@@ -23,9 +23,11 @@ public class PlayerGlobals : MonoBehaviour
         this.baseJumpForce = 6f;
         this.baseJumpCooldown = 0.25f;
         this.baseTotalJumps = 1;
-        this.baseTotalDashes = 1;
+        this.baseTotalDashes = 3;
         this.baseDashForce = 14f;
         this.baseDashDuration = 0.5f;
+        this.baseDashCooldown = 0.1f;
+        this.baseDashResetTimer = 5f;
 
         this.moveSpeed = this.baseMoveSpeed;
         this.jumpForce = this.baseJumpForce;
@@ -34,5 +36,8 @@ public class PlayerGlobals : MonoBehaviour
         this.totalDashes = this.baseTotalDashes;
         this.dashForce = this.baseDashForce;
         this.dashDuration = this.baseDashDuration;
+        this.dashCooldown = this.baseDashCooldown;
+        this.dashResetTimer = this.baseDashResetTimer;
+
     }  
 }

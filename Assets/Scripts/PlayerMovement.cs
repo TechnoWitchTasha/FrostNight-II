@@ -15,26 +15,42 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded;
     public Transform orientation;
     private Vector2 movementInputNormalized;
+    private Vector3 dashVector;
     private bool readyToJump;
     private float speedModifier = 10f;
     private Vector3 moveDir;
     private Rigidbody rb;
-    private int currentJumpsRemaining;
+    private int currentJumpsRemaining, currentDashesRemaining;
+    private bool currentlyDashing;
+    private float dashTimer;
     private void Start(){
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         readyToJump = true;
         currentJumpsRemaining = PlayerGlobals.Singleton.totalJumps;
-        InputManager.Singleton.OnJumpPerformed += HandleJumpPerformed;
+        currentDashesRemaining = PlayerGlobals.Singleton.totalDashes;
+        InputManager.Singleton.OnJumpPerformed += InputManager_OnJumpPerformed_HandleJumpPerformed;
+        InputManager.Singleton.OnDashPerformed += InputManager_OnDashPerformed_HandleDashPerformed;
+        currentlyDashing = false;
+        dashTimer = 0f;
     }
     private void Update(){
         GetInput();
         HandleDrag();
         HandleJump(false);
-        LimitSpeed();
+        LimitMovementSpeed();
+        AddDashSpeed();
+        UpdateTimers();
     }
     private void FixedUpdate(){
         MovePlayer();
+    }
+    private void UpdateTimers(){
+        if (dashTimer < PlayerGlobals.Singleton.dashResetTimer)
+            dashTimer += Time.deltaTime;
+        if (dashTimer >= PlayerGlobals.Singleton.dashResetTimer) {
+            currentDashesRemaining = PlayerGlobals.Singleton.totalDashes;
+        }
     }
     private void GetInput(){
         movementInputNormalized = InputManager.Singleton.GetMoveNormalized();
@@ -53,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
         moveDir = orientation.forward * movementInputNormalized.y + orientation.right * movementInputNormalized.x;
         rb.AddForce(moveDir.normalized * speedModifier * PlayerGlobals.Singleton.moveSpeed, ForceMode.Force);
     }
-    private void LimitSpeed(){
+    private void LimitMovementSpeed(){
         Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         if(horizontalVelocity.magnitude > PlayerGlobals.Singleton.moveSpeed) {
             Vector3 limitedVelocity = horizontalVelocity.normalized * PlayerGlobals.Singleton.moveSpeed;
@@ -79,7 +95,36 @@ public class PlayerMovement : MonoBehaviour
             Invoke(nameof(ResetJump), PlayerGlobals.Singleton.jumpCooldown);
         }
     }
-    private void HandleJumpPerformed(object sender, EventArgs e){
+    private void ResetIsDashing(){
+        currentlyDashing = false;
+    }
+    private void HandleDashPerformed(){
+        //If they have enough dashes, aren't currently dashing
+        if(currentDashesRemaining > 0 && !currentlyDashing) {
+            dashTimer = 0f;
+            currentlyDashing = true;
+            currentDashesRemaining--;
+            Invoke(nameof(ResetIsDashing), PlayerGlobals.Singleton.dashDuration);
+            Dash();
+        }
+    }
+    //sets the dashVector
+    private void Dash(){
+        if(moveDir.magnitude == 0){
+            dashVector = orientation.forward * speedModifier * PlayerGlobals.Singleton.dashForce;
+        }
+        else{
+            dashVector = moveDir.normalized * speedModifier * PlayerGlobals.Singleton.dashForce;
+        }
+    }
+    private void AddDashSpeed(){
+        if(currentlyDashing)
+            rb.AddForce(dashVector, ForceMode.Force);
+    }
+    private void InputManager_OnJumpPerformed_HandleJumpPerformed(object sender, EventArgs e){
         HandleJump(true);
+    }
+    private void InputManager_OnDashPerformed_HandleDashPerformed(object sender, EventArgs e){
+        HandleDashPerformed();
     }
 }
