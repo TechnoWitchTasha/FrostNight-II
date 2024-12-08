@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
         MovePlayer();
     }
     private void GetInput(){
-        movementInputNormalized = InputManager.Instance.GetHorizontalMovementNormalized();
+        movementInputNormalized = InputManager.Instance.GetMoveNormalized();
     }
     private void HandleDrag()
     {
@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
     }
     private void HandleJump(){
-        if(InputManager.Instance.GetIsJumping() && readyToJump && isGrounded) {
+        if(InputManager.Instance.GetJump() && readyToJump && isGrounded) {
             readyToJump = false;
             Jump();
             //Will call ResetJump after jumpCooldown seconds

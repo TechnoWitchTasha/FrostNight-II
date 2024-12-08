@@ -110,16 +110,16 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Melee"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""60234f2d-50be-4265-b9eb-9344d3a29f0f"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Cycle Left Action"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""88c32606-d8b1-4e86-9752-494a7ef7c95a"",
                     ""expectedControlType"": """",
                     ""processors"": """",
@@ -128,7 +128,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Cycle Right Action"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""c9134507-760a-46a2-ab84-9118ce651dc3"",
                     ""expectedControlType"": """",
                     ""processors"": """",
@@ -137,7 +137,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Cycle Defensive Action"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""cc9dd679-f5f6-4f74-a932-defc176bf0bc"",
                     ""expectedControlType"": """",
                     ""processors"": """",
@@ -173,12 +173,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Rotate"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""3f67c8d2-4072-4383-a925-dab56efc9a96"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Toggle Quickspell Menu"",
@@ -315,7 +315,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f8211dd1-6424-4d8f-99c9-85f34b4f3cb4"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
