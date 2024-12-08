@@ -16,10 +16,10 @@ public class SettingGlobals : MonoBehaviour
     public float sensX, sensY;
     public float baseSensX, baseSensY;
     private void Start(){
-        this.sensX = 4f;
-        this.sensY = 4f;
-
         this.baseSensX = 4f;
         this.baseSensY = 4f;
+
+        this.sensX = this.baseSensX;
+        this.sensY = this.baseSensY;
     }
 }
