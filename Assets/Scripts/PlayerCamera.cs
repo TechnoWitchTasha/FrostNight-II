@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCamera : MonoBehaviour
 {
     [SerializeField] private float sensX, sensY;
+    private float sensModifier = 100f;
     public Transform orientation;
 
     private float xRotation, yRotation;
@@ -18,10 +19,10 @@ public class PlayerCamera : MonoBehaviour
 
     private void Update()
     {
-        look = InputManager.Instance.GetLook() * Time.deltaTime;
+        look = InputManager.Singleton.GetLook() * Time.deltaTime;
 
-        yRotation += look.x * sensX;
-        xRotation -= look.y * sensY;
+        yRotation += look.x * sensModifier * sensX;
+        xRotation -= look.y * sensModifier * sensY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         //apply rotation

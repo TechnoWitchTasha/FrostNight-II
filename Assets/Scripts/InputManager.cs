@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    public static InputManager Instance { get; private set; }
+    public static InputManager Singleton { get; private set; }
     private PlayerInputActions playerInputActions;
     [SerializeField] private PlayerInput playerInput;
 
@@ -21,11 +21,11 @@ public class InputManager : MonoBehaviour
     
     private void Awake()
     {
-        if (Instance != null)
+        if (Singleton != null)
         {
             Debug.LogError("There is more than one InputManager instance");
         }
-        Instance = this;
+        Singleton = this;
 
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
