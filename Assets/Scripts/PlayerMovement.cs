@@ -23,6 +23,11 @@ public class PlayerMovement : MonoBehaviour
     private int currentJumpsRemaining, currentDashesRemaining;
     private bool currentlyDashing, currentlyCanDash;
     private float dashTimer;
+    public event EventHandler<OnInvulnerabilityStateChangedEventArgs> OnInvulnerabilityStateChanged;
+    public class OnInvulnerabilityStateChangedEventArgs
+    {
+        public bool invulnerabilityState;
+    }
     private void Start(){
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -98,6 +103,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void ResetIsDashing(){
         currentlyDashing = false;
+        OnInvulnerabilityStateChanged?.Invoke(this, new OnInvulnerabilityStateChangedEventArgs{invulnerabilityState = false});
     }
     private void ResetCurrentlyCanDash(){
         currentlyCanDash = true;
@@ -112,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
             Invoke(nameof(ResetIsDashing), PlayerGlobals.Singleton.dashDuration);
             Invoke(nameof(ResetCurrentlyCanDash), PlayerGlobals.Singleton.dashDuration + PlayerGlobals.Singleton.dashCooldown);
             Dash();
+            OnInvulnerabilityStateChanged?.Invoke(this, new OnInvulnerabilityStateChangedEventArgs{invulnerabilityState = true});
         }
     }
     //sets the dashVector

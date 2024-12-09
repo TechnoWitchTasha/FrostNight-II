@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,12 @@ public class PlayerGlobals : MonoBehaviour
     public float baseMoveSpeed, baseJumpForce, baseJumpCooldown, baseDashForce, baseDashDuration, baseDashCooldown, baseDashResetTimer;
     public int totalJumps, totalDashes;
     public int baseTotalJumps, baseTotalDashes;
+    public bool stateIsInvulnerable;
+
+    public PlayerMovement playerMovement;
     private void Start(){
+        playerMovement.OnInvulnerabilityStateChanged += PlayerMovement_OnInvulnerabilityStateChanged;
+
         this.baseMoveSpeed = 7f;
         this.baseJumpForce = 6f;
         this.baseJumpCooldown = 0.25f;
@@ -39,5 +45,12 @@ public class PlayerGlobals : MonoBehaviour
         this.dashCooldown = this.baseDashCooldown;
         this.dashResetTimer = this.baseDashResetTimer;
 
-    }  
+        this.stateIsInvulnerable = false;
+
+    }
+
+    private void PlayerMovement_OnInvulnerabilityStateChanged(object sender, PlayerMovement.OnInvulnerabilityStateChangedEventArgs e)
+    {
+        this.stateIsInvulnerable = e.invulnerabilityState;
+    }
 }
