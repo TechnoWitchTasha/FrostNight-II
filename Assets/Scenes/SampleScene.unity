@@ -455,15 +455,21 @@ MonoBehaviour:
   jumpCooldown: 0
   dashForce: 0
   dashDuration: 0
+  dashCooldown: 0
+  dashResetTimer: 0
   baseMoveSpeed: 0
   baseJumpForce: 0
   baseJumpCooldown: 0
   baseDashForce: 0
   baseDashDuration: 0
+  baseDashCooldown: 0
+  baseDashResetTimer: 0
   totalJumps: 0
   totalDashes: 0
   baseTotalJumps: 0
   baseTotalDashes: 0
+  stateIsInvulnerable: 0
+  playerMovement: {fileID: 1677604609}
 --- !u!4 &1441933541
 Transform:
   m_ObjectHideFlags: 0

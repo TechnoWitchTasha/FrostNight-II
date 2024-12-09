@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
         readyToJump = true;
     }
     private void HandleJump(bool jumpPerformed){
-        if((jumpPerformed && readyToJump && currentJumpsRemaining >= 0) ||
+        if((jumpPerformed && readyToJump && currentJumpsRemaining > 1) ||
         (InputManager.Singleton.GetJumpPressed() && readyToJump && isGrounded)) {
             readyToJump = false;
             currentJumpsRemaining--;
