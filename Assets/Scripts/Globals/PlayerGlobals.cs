@@ -23,11 +23,11 @@ public class PlayerGlobals : MonoBehaviour
         this.baseJumpForce = 6f;
         this.baseJumpCooldown = 0.25f;
         this.baseTotalJumps = 1;
-        this.baseTotalDashes = 3;
+        this.baseTotalDashes = 1;
         this.baseDashForce = 14f;
         this.baseDashDuration = 0.5f;
         this.baseDashCooldown = 0.1f;
-        this.baseDashResetTimer = 5f;
+        this.baseDashResetTimer = 3f;
 
         this.moveSpeed = this.baseMoveSpeed;
         this.jumpForce = this.baseJumpForce;

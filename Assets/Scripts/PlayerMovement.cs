@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDir;
     private Rigidbody rb;
     private int currentJumpsRemaining, currentDashesRemaining;
-    private bool currentlyDashing;
+    private bool currentlyDashing, currentlyCanDash;
     private float dashTimer;
     private void Start(){
         rb = GetComponent<Rigidbody>();
@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         InputManager.Singleton.OnJumpPerformed += InputManager_OnJumpPerformed_HandleJumpPerformed;
         InputManager.Singleton.OnDashPerformed += InputManager_OnDashPerformed_HandleDashPerformed;
         currentlyDashing = false;
+        currentlyCanDash = true;
         dashTimer = 0f;
     }
     private void Update(){
@@ -98,13 +99,18 @@ public class PlayerMovement : MonoBehaviour
     private void ResetIsDashing(){
         currentlyDashing = false;
     }
+    private void ResetCurrentlyCanDash(){
+        currentlyCanDash = true;
+    }
     private void HandleDashPerformed(){
         //If they have enough dashes, aren't currently dashing
-        if(currentDashesRemaining > 0 && !currentlyDashing) {
+        if(currentDashesRemaining > 0 && !currentlyDashing && currentlyCanDash) {
             dashTimer = 0f;
             currentlyDashing = true;
+            currentlyCanDash = false;
             currentDashesRemaining--;
             Invoke(nameof(ResetIsDashing), PlayerGlobals.Singleton.dashDuration);
+            Invoke(nameof(ResetCurrentlyCanDash), PlayerGlobals.Singleton.dashDuration + PlayerGlobals.Singleton.dashCooldown);
             Dash();
         }
     }
