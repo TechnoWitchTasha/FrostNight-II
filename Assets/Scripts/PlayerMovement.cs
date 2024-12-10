@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded;
     public Transform orientation;
     private Vector2 movementInputNormalized;
-    private Vector3 dashVector;
     private bool readyToJump;
     private float speedModifier = 10f;
     private Vector3 moveDir;
@@ -45,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
         HandleDrag();
         HandleJump(false);
         LimitMovementSpeed();
-        AddDashSpeed();
         UpdateTimers();
     }
     private void FixedUpdate(){
@@ -73,12 +71,18 @@ public class PlayerMovement : MonoBehaviour
     }
     private void MovePlayer(){
         moveDir = orientation.forward * movementInputNormalized.y + orientation.right * movementInputNormalized.x;
-        rb.AddForce(moveDir.normalized * speedModifier * PlayerGlobals.Singleton.moveSpeed, ForceMode.Force);
+        if(!currentlyDashing)
+            rb.AddForce(moveDir.normalized * speedModifier * PlayerGlobals.Singleton.moveSpeed, ForceMode.Force);
+        else
+            rb.AddForce(moveDir.normalized * speedModifier * PlayerGlobals.Singleton.dashSpeed, ForceMode.Force);
     }
     private void LimitMovementSpeed(){
         Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        if(horizontalVelocity.magnitude > PlayerGlobals.Singleton.moveSpeed) {
-            Vector3 limitedVelocity = horizontalVelocity.normalized * PlayerGlobals.Singleton.moveSpeed;
+
+        float speedLimit = currentlyDashing ? PlayerGlobals.Singleton.dashSpeed : PlayerGlobals.Singleton.moveSpeed;
+
+        if(horizontalVelocity.magnitude > speedLimit) {
+            Vector3 limitedVelocity = horizontalVelocity.normalized * speedLimit;
             rb.velocity = new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z);
         }
     }
@@ -87,9 +91,6 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(transform.up * PlayerGlobals.Singleton.jumpForce, ForceMode.Impulse);
-    }
-    private void ResetJump(){
-        readyToJump = true;
     }
     private void HandleJump(bool jumpPerformed){
         if((jumpPerformed && readyToJump && currentJumpsRemaining > 1) ||
@@ -101,13 +102,6 @@ public class PlayerMovement : MonoBehaviour
             Invoke(nameof(ResetJump), PlayerGlobals.Singleton.jumpCooldown);
         }
     }
-    private void ResetIsDashing(){
-        currentlyDashing = false;
-        OnInvulnerabilityStateChanged?.Invoke(this, new OnInvulnerabilityStateChangedEventArgs{invulnerabilityState = false});
-    }
-    private void ResetCurrentlyCanDash(){
-        currentlyCanDash = true;
-    }
     private void HandleDashPerformed(){
         //If they have enough dashes, aren't currently dashing
         if(currentDashesRemaining > 0 && !currentlyDashing && currentlyCanDash) {
@@ -117,22 +111,18 @@ public class PlayerMovement : MonoBehaviour
             currentDashesRemaining--;
             Invoke(nameof(ResetIsDashing), PlayerGlobals.Singleton.dashDuration);
             Invoke(nameof(ResetCurrentlyCanDash), PlayerGlobals.Singleton.dashDuration + PlayerGlobals.Singleton.dashCooldown);
-            Dash();
             OnInvulnerabilityStateChanged?.Invoke(this, new OnInvulnerabilityStateChangedEventArgs{invulnerabilityState = true});
         }
     }
-    //sets the dashVector
-    private void Dash(){
-        if(moveDir.magnitude == 0){
-            dashVector = orientation.forward * speedModifier * PlayerGlobals.Singleton.dashForce;
-        }
-        else{
-            dashVector = moveDir.normalized * speedModifier * PlayerGlobals.Singleton.dashForce;
-        }
+    private void ResetJump(){
+        readyToJump = true;
     }
-    private void AddDashSpeed(){
-        if(currentlyDashing)
-            rb.AddForce(dashVector, ForceMode.Force);
+    private void ResetIsDashing(){
+        currentlyDashing = false;
+        OnInvulnerabilityStateChanged?.Invoke(this, new OnInvulnerabilityStateChangedEventArgs{invulnerabilityState = false});
+    }
+    private void ResetCurrentlyCanDash(){
+        currentlyCanDash = true;
     }
     private void InputManager_OnJumpPerformed_HandleJumpPerformed(object sender, EventArgs e){
         HandleJump(true);
