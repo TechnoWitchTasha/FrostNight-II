@@ -13,13 +13,19 @@ public class SettingGlobals : MonoBehaviour
         }
         Singleton = this;
     }
-    public float sensX, sensY;
-    public float baseSensX, baseSensY;
+    public float sensX, sensY;//, fieldOfView;
+    public float baseSensX, baseSensY;//, baseFieldOfView;
+
+    public bool fovStretchingWhenDashing;
     private void Start(){
         this.baseSensX = 4f;
         this.baseSensY = 4f;
+       // this.baseFieldOfView = 90f;
 
         this.sensX = this.baseSensX;
         this.sensY = this.baseSensY;
+     //   this.fieldOfView = this.baseFieldOfView;
+
+        fovStretchingWhenDashing = true;
     }
 }

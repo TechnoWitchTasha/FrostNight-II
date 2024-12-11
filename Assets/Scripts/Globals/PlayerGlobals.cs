@@ -23,7 +23,7 @@ public class PlayerGlobals : MonoBehaviour
 
     public PlayerMovement playerMovement;
     private void Start(){
-        playerMovement.OnInvulnerabilityStateChanged += PlayerMovement_OnInvulnerabilityStateChanged;
+        playerMovement.OnDashStateChanged += PlayerMovement_OnDashStateChanged;
 
         this.baseMoveSpeed = 7f;
         this.baseJumpForce = 6f;
@@ -49,8 +49,8 @@ public class PlayerGlobals : MonoBehaviour
 
     }
 
-    private void PlayerMovement_OnInvulnerabilityStateChanged(object sender, PlayerMovement.OnInvulnerabilityStateChangedEventArgs e)
+    private void PlayerMovement_OnDashStateChanged(object sender, PlayerMovement.OnDashStateChangedEventArgs e)
     {
-        this.stateIsInvulnerable = e.invulnerabilityState;
+        this.stateIsInvulnerable = e.dashState;
     }
 }

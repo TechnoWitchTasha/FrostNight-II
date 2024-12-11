@@ -22,10 +22,10 @@ public class PlayerMovement : MonoBehaviour
     private int currentJumpsRemaining, currentDashesRemaining;
     private bool currentlyDashing, currentlyCanDash;
     private float dashTimer;
-    public event EventHandler<OnInvulnerabilityStateChangedEventArgs> OnInvulnerabilityStateChanged;
-    public class OnInvulnerabilityStateChangedEventArgs
+    public event EventHandler<OnDashStateChangedEventArgs> OnDashStateChanged;
+    public class OnDashStateChangedEventArgs
     {
-        public bool invulnerabilityState;
+        public bool dashState;
     }
     private void Start(){
         rb = GetComponent<Rigidbody>();
@@ -111,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
             currentDashesRemaining--;
             Invoke(nameof(ResetIsDashing), PlayerGlobals.Singleton.dashDuration);
             Invoke(nameof(ResetCurrentlyCanDash), PlayerGlobals.Singleton.dashDuration + PlayerGlobals.Singleton.dashCooldown);
-            OnInvulnerabilityStateChanged?.Invoke(this, new OnInvulnerabilityStateChangedEventArgs{invulnerabilityState = true});
+            OnDashStateChanged?.Invoke(this, new OnDashStateChangedEventArgs{dashState = true});
         }
     }
     private void ResetJump(){
@@ -119,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void ResetIsDashing(){
         currentlyDashing = false;
-        OnInvulnerabilityStateChanged?.Invoke(this, new OnInvulnerabilityStateChangedEventArgs{invulnerabilityState = false});
+        OnDashStateChanged?.Invoke(this, new OnDashStateChangedEventArgs{dashState = false});
     }
     private void ResetCurrentlyCanDash(){
         currentlyCanDash = true;
