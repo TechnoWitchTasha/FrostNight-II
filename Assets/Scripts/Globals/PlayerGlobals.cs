@@ -26,10 +26,10 @@ public class PlayerGlobals : MonoBehaviour
         playerMovement.OnDashStateChanged += PlayerMovement_OnDashStateChanged;
 
         this.baseMoveSpeed = 7f;
-        this.baseJumpForce = 6f;
-        this.baseJumpCooldown = 0.25f;
-        this.baseTotalJumps = 1;
-        this.baseTotalDashes = 1;
+        this.baseJumpForce = 12f;
+        this.baseJumpCooldown = 0.1f;
+        this.baseTotalJumps = 3;
+        this.baseTotalDashes = 3;
         this.baseDashSpeed = 15f;
         this.baseDashDuration = 1f;
         this.baseDashCooldown = 0.15f;

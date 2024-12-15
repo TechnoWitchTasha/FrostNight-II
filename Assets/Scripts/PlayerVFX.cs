@@ -30,14 +30,10 @@ public class PlayerVFX : MonoBehaviour
     private void DisableDashingVisuals()
     {
         VFXObj.SetActive(false);
-        if(SettingGlobals.Singleton.fovStretchingWhenDashing)
-            playerCamera.fieldOfView -= fovStretchingInDegrees;
     }
 
     private void EnableDashingVisuals()
     {
         VFXObj.SetActive(true);
-        if(SettingGlobals.Singleton.fovStretchingWhenDashing)
-            playerCamera.fieldOfView += fovStretchingInDegrees;
     }
 }

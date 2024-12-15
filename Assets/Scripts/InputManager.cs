@@ -19,7 +19,6 @@ public class InputManager : MonoBehaviour
     public event EventHandler OnToggleInventoryPerformed;
     public event EventHandler OnToggleQuickspellMenuPerformed;
     public event EventHandler OnToggleBuildModePerformed;
-    
     private void Awake()
     {
         if (Singleton != null)
