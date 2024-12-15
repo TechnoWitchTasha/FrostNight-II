@@ -1,14 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed = 7f;
-    public float groundDrag, airDrag, jumpForce, jumpCooldown;
+    public float groundDrag, airDrag;
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask GroundLayer;
@@ -19,41 +19,70 @@ public class PlayerMovement : MonoBehaviour
     private float speedModifier = 10f;
     private Vector3 moveDir;
     private Rigidbody rb;
+    private int currentJumpsRemaining, currentDashesRemaining;
+    private bool currentlyDashing, currentlyCanDash;
+    private float dashTimer;
+    public event EventHandler<OnDashStateChangedEventArgs> OnDashStateChanged;
+    public class OnDashStateChangedEventArgs
+    {
+        public bool dashState;
+    }
     private void Start(){
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         readyToJump = true;
+        currentJumpsRemaining = PlayerGlobals.Singleton.totalJumps;
+        currentDashesRemaining = PlayerGlobals.Singleton.totalDashes;
+        InputManager.Singleton.OnJumpPerformed += InputManager_OnJumpPerformed_HandleJumpPerformed;
+        InputManager.Singleton.OnDashPerformed += InputManager_OnDashPerformed_HandleDashPerformed;
+        currentlyDashing = false;
+        currentlyCanDash = true;
+        dashTimer = 0f;
     }
     private void Update(){
         GetInput();
         HandleDrag();
-        HandleJump();
-        LimitSpeed();
+        HandleJump(false);
+        LimitMovementSpeed();
+        UpdateTimers();
     }
     private void FixedUpdate(){
         MovePlayer();
     }
+    private void UpdateTimers(){
+        if (dashTimer < PlayerGlobals.Singleton.dashResetTimer)
+            dashTimer += Time.deltaTime;
+        if (dashTimer >= PlayerGlobals.Singleton.dashResetTimer) {
+            currentDashesRemaining = PlayerGlobals.Singleton.totalDashes;
+        }
+    }
     private void GetInput(){
-        movementInputNormalized = InputManager.Instance.GetMoveNormalized();
+        movementInputNormalized = InputManager.Singleton.GetMoveNormalized();
     }
     private void HandleDrag()
     {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, GroundLayer);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.1f, GroundLayer);
         if (isGrounded) {
             rb.drag = groundDrag;
+            currentJumpsRemaining = PlayerGlobals.Singleton.totalJumps;
         }
         else
             rb.drag = airDrag;
     }
     private void MovePlayer(){
         moveDir = orientation.forward * movementInputNormalized.y + orientation.right * movementInputNormalized.x;
-        
-        rb.AddForce(moveDir.normalized * speedModifier * moveSpeed, ForceMode.Force);
+        if(!currentlyDashing)
+            rb.AddForce(moveDir.normalized * speedModifier * PlayerGlobals.Singleton.moveSpeed, ForceMode.Force);
+        else
+            rb.AddForce(moveDir.normalized * speedModifier * PlayerGlobals.Singleton.dashSpeed, ForceMode.Force);
     }
-    private void LimitSpeed(){
+    private void LimitMovementSpeed(){
         Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        if(horizontalVelocity.magnitude > moveSpeed) {
-            Vector3 limitedVelocity = horizontalVelocity.normalized * moveSpeed;
+
+        float speedLimit = currentlyDashing ? PlayerGlobals.Singleton.dashSpeed : PlayerGlobals.Singleton.moveSpeed;
+
+        if(horizontalVelocity.magnitude > speedLimit) {
+            Vector3 limitedVelocity = horizontalVelocity.normalized * speedLimit;
             rb.velocity = new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z);
         }
     }
@@ -61,17 +90,44 @@ public class PlayerMovement : MonoBehaviour
         //reset y vel
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        rb.AddForce(transform.up * PlayerGlobals.Singleton.jumpForce, ForceMode.Impulse);
+    }
+    private void HandleJump(bool jumpPerformed){
+        if((jumpPerformed && readyToJump && currentJumpsRemaining > 1) ||
+        (InputManager.Singleton.GetJumpPressed() && readyToJump && isGrounded)) {
+            readyToJump = false;
+            currentJumpsRemaining--;
+            Jump();
+            //Will call ResetJump after jumpCooldown seconds
+            Invoke(nameof(ResetJump), PlayerGlobals.Singleton.jumpCooldown);
+        }
+    }
+    private void HandleDashPerformed(){
+        //If they have enough dashes, aren't currently dashing
+        if(currentDashesRemaining > 0 && !currentlyDashing && currentlyCanDash) {
+            dashTimer = 0f;
+            currentlyDashing = true;
+            currentlyCanDash = false;
+            currentDashesRemaining--;
+            Invoke(nameof(ResetIsDashing), PlayerGlobals.Singleton.dashDuration);
+            Invoke(nameof(ResetCurrentlyCanDash), PlayerGlobals.Singleton.dashDuration + PlayerGlobals.Singleton.dashCooldown);
+            OnDashStateChanged?.Invoke(this, new OnDashStateChangedEventArgs{dashState = true});
+        }
     }
     private void ResetJump(){
         readyToJump = true;
     }
-    private void HandleJump(){
-        if(InputManager.Instance.GetJump() && readyToJump && isGrounded) {
-            readyToJump = false;
-            Jump();
-            //Will call ResetJump after jumpCooldown seconds
-            Invoke(nameof(ResetJump), jumpCooldown);
-        }
+    private void ResetIsDashing(){
+        currentlyDashing = false;
+        OnDashStateChanged?.Invoke(this, new OnDashStateChangedEventArgs{dashState = false});
+    }
+    private void ResetCurrentlyCanDash(){
+        currentlyCanDash = true;
+    }
+    private void InputManager_OnJumpPerformed_HandleJumpPerformed(object sender, EventArgs e){
+        HandleJump(true);
+    }
+    private void InputManager_OnDashPerformed_HandleDashPerformed(object sender, EventArgs e){
+        HandleDashPerformed();
     }
 }

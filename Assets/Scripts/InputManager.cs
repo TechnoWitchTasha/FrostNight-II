@@ -6,10 +6,11 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    public static InputManager Instance { get; private set; }
+    public static InputManager Singleton { get; private set; }
     private PlayerInputActions playerInputActions;
     [SerializeField] private PlayerInput playerInput;
 
+    public event EventHandler OnJumpPerformed;
     public event EventHandler OnDashPerformed;
     public event EventHandler OnInteractPerformed;
     public event EventHandler OnCycleLeftActionPerformed;
@@ -18,18 +19,18 @@ public class InputManager : MonoBehaviour
     public event EventHandler OnToggleInventoryPerformed;
     public event EventHandler OnToggleQuickspellMenuPerformed;
     public event EventHandler OnToggleBuildModePerformed;
-    
     private void Awake()
     {
-        if (Instance != null)
+        if (Singleton != null)
         {
             Debug.LogError("There is more than one InputManager instance");
         }
-        Instance = this;
+        Singleton = this;
 
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
 
+        playerInputActions.Player.Jump.performed += Jump_Performed;
         playerInputActions.Player.Dash.performed += Dash_Performed;
         playerInputActions.Player.Interact.performed += Interact_Performed;
         playerInputActions.Player.CycleLeftAction.performed += CycleLeftAction_Performed;
@@ -40,10 +41,15 @@ public class InputManager : MonoBehaviour
         playerInputActions.Player.ToggleBuildMode.performed += ToggleBuildMode_Performed;
 
     }
+
     public Vector2 GetMoveNormalized() {
         return playerInputActions.Player.Move.ReadValue<Vector2>().normalized;
     }
-    public bool GetJump(){
+    private void Jump_Performed(InputAction.CallbackContext context)
+    {
+        OnJumpPerformed?.Invoke(this, EventArgs.Empty);
+    }
+    public bool GetJumpPressed(){
         return playerInputActions.Player.Jump.IsPressed();
     }
     public Vector2 GetLook() {
